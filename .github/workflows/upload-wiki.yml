@@ -32,7 +32,7 @@ jobs:
       - name: Upload to gdrive
         uses: mathisve/gdrive-upload-action@main
         with:
-          filename: my-repo.wiki/blue-paper.pdf
+          filename: _output/blue-paper.pdf
           name: blue-paper.pdf
           folderId: "1D7Kh96ejmGy9gDOmiVcYMqkA4rIEJEZ0"
           credentials: ${{ secrets.wiki_upload_credentials }}

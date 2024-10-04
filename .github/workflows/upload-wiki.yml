@@ -1,0 +1,39 @@
+# .github/workflows/main.yml
+name: Upload wiki
+on:
+  gollum:
+  workflow_dispatch:
+
+jobs:
+  gdrive-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout wiki
+        uses: actions/checkout@v2
+        with:
+            repository: 'freqva/test-gdrive-upload.wiki'
+            ref: 'master'
+            path: 'my-repo.wiki'
+
+      - name: Build book
+        run: |-
+            npm install -g md-to-pdf
+            mkdir -p _output
+            cd my-repo.wiki
+            echo; echo "Input Folder Listing"
+            ls
+            echo; echo "Generating PDF"
+            for f in *.md; do cat $f; echo; done | md-to-pdf --stylesheet "../theme/style.css" > ../_output/blue-paper.pdf
+            cd ../_output
+            echo; echo "Output Folder Listing"
+            ls
+            cd ..
+  
+#      - name: Upload to gdrive
+#        uses: mathisve/gdrive-upload-action@main
+#        with:
+#          filename: my-repo.wiki/blue-paper.pdf
+#          name: blue-paper.pdf
+#          folderId: ${{ secrets.folderId }}
+#          credentials: ${{ secrets.credentials }}
+#          encoded: false

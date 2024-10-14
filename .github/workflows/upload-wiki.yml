@@ -17,7 +17,7 @@ jobs:
 
       - name: Build book
         run: |-
-            npm install -g md-to-pdf
+            npm install md-to-pdf
             mkdir -p _output
             cd my-repo.wiki
             echo; echo "Input Folder Listing"

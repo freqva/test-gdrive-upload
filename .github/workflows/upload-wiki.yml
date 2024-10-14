@@ -24,7 +24,7 @@ jobs:
             ls
             curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc -o gh-md-toc
             chmod a+x gh-md-toc
-            ./gh-md-toc --insert --no-backup --hide-footer README.md
+            ./gh-md-toc README.md > README.md
             echo; echo "Generating PDF"
             for f in *.md; do cat $f; echo; done | md-to-pdf > ../_output/blue-paper.pdf
             cd ../_output

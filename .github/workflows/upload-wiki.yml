@@ -36,7 +36,7 @@ jobs:
             cd ..
   
       - name: Upload to gdrive
-        uses: mathisve/gdrive-upload-action@main
+        uses: mathisve/gdrive-upload-action@b6fd5bd84f4d0d3f0bc04a555faee941c5aa8807
         with:
           filename: _output/blue-paper.pdf
           name: blue-paper.pdf
